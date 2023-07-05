@@ -1,9 +1,9 @@
 module.exports = {
-  env: { browser: true, es2020: true, node: true },
+  env: { browser: true, es2020: true, node: true, jest: true },
   extends: ['eslint:recommended', 'plugin:prettier/recommended'],
   parser: '@typescript-eslint/parser',
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
-  plugins: ['prettier', 'import'],
+  plugins: ['prettier', 'import', 'jest'],
   rules: {
     '@typescript-eslint/no-non-null-assertion': 'off',
     'max-len': [
