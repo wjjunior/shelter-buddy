@@ -3,5 +3,27 @@ module.exports = {
   extends: ['eslint:recommended', 'plugin:prettier/recommended'],
   parser: '@typescript-eslint/parser',
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
-  plugins: ['prettier'],
+  plugins: ['prettier', 'import'],
+  rules: {
+    '@typescript-eslint/no-non-null-assertion': 'off',
+    'max-len': [
+      'error',
+      {
+        code: 100,
+        ignoreComments: true,
+        ignoreTrailingComments: true,
+        ignoreUrls: true,
+        ignoreStrings: true,
+        ignoreTemplateLiterals: true,
+      },
+    ],
+    'import/order': [
+      'error',
+      {
+        groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+        'newlines-between': 'always',
+        alphabetize: { order: 'asc', caseInsensitive: true },
+      },
+    ],
+  },
 }
