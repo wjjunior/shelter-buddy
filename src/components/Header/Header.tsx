@@ -1,11 +1,13 @@
-import Logo from "../../assets/images/logo.svg";
+import Logo from '../../assets/images/logo.svg'
+
+import { StyledHeader, StyledLogo } from './styled'
 
 const Header = () => {
   return (
-    <header>
-      <img id="logo" src={Logo} alt="Shelter Buddy logo"></img>
-    </header>
-  );
-};
+    <StyledHeader>
+      <StyledLogo src={Logo} alt="Shelter Buddy logo" />
+    </StyledHeader>
+  )
+}
 
-export default Header;
+export default Header
