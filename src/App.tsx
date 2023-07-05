@@ -1,6 +1,6 @@
 const App = () => {
   // Your implementation starts here
-  return null;
-};
+  return null
+}
 
-export default App;
+export default App
