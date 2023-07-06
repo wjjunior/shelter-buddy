@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
-import { SortableTableData } from '../sortable-list/types'
+import { SortableListData } from '../sortable-list/types'
 
 export type SearchInputProps = {
-  list: SortableTableData[]
-  setFilteredList: (filteredList: SortableTableData[]) => void
+  list: SortableListData[]
+  setFilteredList: (filteredList: SortableListData[]) => void
 }

@@ -1,5 +1,5 @@
-import { SortableTableData } from '../../../../components/sortable-list/types'
+import { SortableListData } from '../../../../components/sortable-list/types'
 
 export type AnimalListMobileItemProps = {
-  item: SortableTableData
+  item: SortableListData
 }
