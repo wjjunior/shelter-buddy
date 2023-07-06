@@ -10,6 +10,6 @@ export const mockAnimalList = (length = 5): Animal[] => {
     type: chance.word(),
     breed: chance.word(),
     gender: chance.pickone(['Male', 'Female']),
-    color: chance.color(),
+    color: chance.word(),
   }))
 }
