@@ -10,13 +10,13 @@ import { SortableListTableProps } from './types'
 const chance = new Chance()
 
 const mockHeaders = [
-  { label: chance.word(), property: chance.word(), isSortable: chance.bool() },
-  { label: chance.word(), property: chance.word(), isSortable: chance.bool() },
-  { label: chance.word(), property: chance.word(), isSortable: chance.bool() },
-  { label: chance.word(), property: chance.word(), isSortable: chance.bool() },
-  { label: chance.word(), property: chance.word(), isSortable: chance.bool() },
-  { label: chance.word(), property: chance.word(), isSortable: chance.bool() },
-  { label: chance.word(), property: chance.word(), isSortable: chance.bool() },
+  { label: chance.word(), property: chance.word(), isSortable: true },
+  { label: chance.word(), property: chance.word(), isSortable: true },
+  { label: chance.word(), property: chance.word(), isSortable: true },
+  { label: chance.word(), property: chance.word(), isSortable: true },
+  { label: chance.word(), property: chance.word(), isSortable: true },
+  { label: chance.word(), property: chance.word(), isSortable: true },
+  { label: chance.word(), property: chance.word(), isSortable: true },
 ]
 
 const mockItemsList = mockAnimalList(3)

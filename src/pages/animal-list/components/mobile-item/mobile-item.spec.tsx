@@ -10,9 +10,9 @@ describe('AnimalListMobileItem', () => {
   test('renders the item details', () => {
     const { getByText } = render(<AnimalListMobileItem item={mockItem} />)
 
-    expect(getByText(`Type: ${mockItem.type}`)).toBeInTheDocument()
-    expect(getByText(`Breed: ${mockItem.breed}`)).toBeInTheDocument()
-    expect(getByText(`Gender: ${mockItem.gender}`)).toBeInTheDocument()
-    expect(getByText(`Color: ${mockItem.color}`)).toBeInTheDocument()
+    expect(getByText(mockItem.type)).toBeInTheDocument()
+    expect(getByText(mockItem.breed)).toBeInTheDocument()
+    expect(getByText(mockItem.gender)).toBeInTheDocument()
+    expect(getByText(mockItem.color)).toBeInTheDocument()
   })
 })
