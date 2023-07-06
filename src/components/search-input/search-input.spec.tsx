@@ -2,7 +2,7 @@ import { render, fireEvent } from '@testing-library/react'
 import Chance from 'chance'
 
 import { mockAnimalList } from '../../mocks/mock-animal-list'
-import { SortableTableData } from '../sortable-table/types'
+import { SortableTableData } from '../sortable-list/types'
 
 import SearchInput from './search-input'
 
