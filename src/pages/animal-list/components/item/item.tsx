@@ -1,5 +1,5 @@
 import { Button, TableCell, TableRow } from '@material-ui/core'
-import ChevronRight from '@mui/icons-material/ChevronRight'
+import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 import React from 'react'
 
 import Placeholder from '../../../../assets/images/placeholder.png'
@@ -22,7 +22,7 @@ const AnimalListItem: React.FC<AnimalListItemProps> = ({ item }) => {
       <TableCell align="left">
         <Button variant="text" color="primary">
           Detail
-          <ChevronRight data-testid="ChevronRight" />
+          <ChevronRightIcon data-testid="ChevronRight" />
         </Button>
       </TableCell>
     </TableRow>
