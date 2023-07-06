@@ -4,13 +4,13 @@ import { render } from '@testing-library/react'
 import { mockAnimalList } from '../../../../mocks/mock-animal-list'
 import { Animal } from '../../../../store/types'
 
-import AnimalListItem from './item'
+import AnimalListItemComponent from './item'
 
 const makeSut = (item: Animal) =>
   render(
     <Table>
       <TableBody>
-        <AnimalListItem item={item} />
+        <AnimalListItemComponent item={item} />
       </TableBody>
     </Table>,
   )

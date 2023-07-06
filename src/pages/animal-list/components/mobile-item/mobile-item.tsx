@@ -5,7 +5,7 @@ import React from 'react'
 import { useStyles } from './styled'
 import { AnimalListMobileItemProps } from './types'
 
-const AnimalListMobileItem: React.FC<AnimalListMobileItemProps> = ({ item }) => {
+const AnimalListMobileItemComponent: React.FC<AnimalListMobileItemProps> = ({ item }) => {
   const classes = useStyles()
   return (
     <Grid item xs className={classes.animalDetails}>
@@ -34,4 +34,4 @@ const AnimalListMobileItem: React.FC<AnimalListMobileItemProps> = ({ item }) => 
   )
 }
 
-export default AnimalListMobileItem
+export default AnimalListMobileItemComponent

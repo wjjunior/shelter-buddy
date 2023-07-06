@@ -1,4 +1,4 @@
-import { AnimalListItem } from './item'
-import { AnimalListMobileItem } from './mobile-item'
+import { AnimalListItemComponent } from './item'
+import { AnimalListMobileItemComponent } from './mobile-item'
 
-export { AnimalListItem, AnimalListMobileItem }
+export { AnimalListItemComponent, AnimalListMobileItemComponent }

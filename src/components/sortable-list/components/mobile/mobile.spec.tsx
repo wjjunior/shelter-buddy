@@ -27,7 +27,7 @@ const makeSut = ({ itemList = mockItemList }: { itemList?: SortableListData[] } 
   )
 
 describe('SortableListMobileComponent', () => {
-  it('renders the list items correctly', () => {
+  it('should render the list items correctly', () => {
     const { getAllByText } = makeSut()
 
     const item1Name = getAllByText(mockItemList[0].name)
@@ -37,7 +37,7 @@ describe('SortableListMobileComponent', () => {
     expect(item2Name[1]).toBeInTheDocument()
   })
 
-  it('renders the item images correctly', () => {
+  it('should render the item images correctly', () => {
     const itemList = [
       { id: 1, name: 'Item 1', img: 'image1.png' },
       { id: 2, name: 'Item 2', img: 'image2.png' },
@@ -53,7 +53,7 @@ describe('SortableListMobileComponent', () => {
     expect(item2Image.src).toContain(itemList[1].img)
   })
 
-  it('renders the MobileRowComponent for each item', () => {
+  it('should render the MobileRowComponent for each item', () => {
     const { getAllByText } = makeSut()
 
     const item1RowComponent = getAllByText(mockItemList[0].name)[1].parentElement

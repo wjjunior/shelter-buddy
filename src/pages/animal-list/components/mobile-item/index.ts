@@ -1,1 +1,1 @@
-export { default as AnimalListMobileItem } from './mobile-item'
+export { default as AnimalListMobileItemComponent } from './mobile-item'

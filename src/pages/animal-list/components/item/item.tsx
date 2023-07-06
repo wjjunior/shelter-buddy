@@ -7,7 +7,7 @@ import Placeholder from '../../../../assets/images/placeholder.png'
 import { useStyles } from './styled'
 import { AnimalListItemProps } from './types'
 
-const AnimalListItem: React.FC<AnimalListItemProps> = ({ item }) => {
+const AnimalListItemComponent: React.FC<AnimalListItemProps> = ({ item }) => {
   const classes = useStyles()
   return (
     <TableRow className={classes.row}>
@@ -29,4 +29,4 @@ const AnimalListItem: React.FC<AnimalListItemProps> = ({ item }) => {
   )
 }
 
-export default AnimalListItem
+export default AnimalListItemComponent
