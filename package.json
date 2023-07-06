@@ -33,6 +33,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --passWithNoTests --no-cache --runInBand",
+    "test:push": "npm test -- --watchAll=false",
     "eject": "react-scripts eject",
     "prepare": "husky install"
   },
