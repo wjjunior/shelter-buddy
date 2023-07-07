@@ -1,11 +1,16 @@
 import { CardContent, Grid, useMediaQuery, useTheme } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 
+import { SORTABLE_LIST_ITEMS_PER_PAGE } from '../../utils/constants'
 import { InformactiveBadge } from '../informactive-badge'
 import { SearchInput } from '../search-input'
 
-import { SortableListMobileComponent, SortableListTableComponent } from './components'
-import { useStyles } from './styled'
+import {
+  SortableListMobileComponent,
+  SortableListTableComponent,
+  PaginationComponent,
+} from './components'
+import { StyledPaginationDiv, useStyles } from './styled'
 import { SortableListData, SortableListProps } from './types'
 
 const SortableList: React.FC<SortableListProps> = ({
@@ -16,14 +21,19 @@ const SortableList: React.FC<SortableListProps> = ({
   MobileItemComponent,
   defaultSortBy,
 }) => {
+  const itemsPerPage = SORTABLE_LIST_ITEMS_PER_PAGE
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
   const classes = useStyles()
+
   const [sortBy, setSortBy] = useState<keyof SortableListData>(
     defaultSortBy || headers[0].property,
   )
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc')
   const [filteredList, setFilteredList] = useState<SortableListData[]>(tableData)
+  const [currentPage, setCurrentPage] = useState<number>(1)
+
+  const totalPages = Math.ceil(filteredList.length / itemsPerPage)
 
   const handleSort = (property: keyof SortableListData) => {
     const newSortOrder = sortBy === property && sortOrder === 'asc' ? 'desc' : 'asc'
@@ -31,17 +41,29 @@ const SortableList: React.FC<SortableListProps> = ({
     setSortOrder(newSortOrder)
   }
 
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page)
+  }
+
+  const getPaginatedData = (): SortableListData[] => {
+    const startIndex = (currentPage - 1) * itemsPerPage
+    const endIndex = startIndex + itemsPerPage
+    return filteredList.slice(startIndex, endIndex)
+  }
+
   useEffect(() => {
-    const sortedData = [...filteredList].sort((a, b) => {
-      if (a[sortBy] < b[sortBy]) {
-        return sortOrder === 'asc' ? -1 : 1
-      }
-      if (a[sortBy] > b[sortBy]) {
-        return sortOrder === 'asc' ? 1 : -1
-      }
-      return 0
+    setFilteredList(prevList => {
+      const sortedData = [...prevList].sort((a, b) => {
+        if (a[sortBy] < b[sortBy]) {
+          return sortOrder === 'asc' ? -1 : 1
+        }
+        if (a[sortBy] > b[sortBy]) {
+          return sortOrder === 'asc' ? 1 : -1
+        }
+        return 0
+      })
+      return sortedData
     })
-    setFilteredList(sortedData)
   }, [sortBy, sortOrder])
 
   return (
@@ -58,13 +80,13 @@ const SortableList: React.FC<SortableListProps> = ({
         <Grid item xs>
           {isMobile ? (
             <SortableListMobileComponent
-              itemList={filteredList}
+              itemList={getPaginatedData()}
               MobileRowComponent={MobileItemComponent}
             />
           ) : (
             <SortableListTableComponent
               headers={headers}
-              itemsList={filteredList}
+              itemsList={getPaginatedData()}
               TableRowComponent={TableRowComponent}
               sortBy={sortBy}
               sortOrder={sortOrder}
@@ -72,6 +94,13 @@ const SortableList: React.FC<SortableListProps> = ({
             />
           )}
         </Grid>
+        <StyledPaginationDiv data-testid="pagination-component">
+          <PaginationComponent
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
+        </StyledPaginationDiv>
       </Grid>
     </CardContent>
   )

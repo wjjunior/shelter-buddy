@@ -14,3 +14,11 @@ export const StyledContainerDiv = styled('div')(() => ({
 export const StyledDiv = styled('div')(() => ({
   width: '100%',
 }))
+
+export const StyledPaginationDiv = styled('div')(() => ({
+  width: '100%',
+  display: 'flex',
+  marginTop: '16px',
+  alignItems: 'center',
+  justifyContent: 'start',
+}))

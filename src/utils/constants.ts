@@ -1,0 +1,1 @@
+export const SORTABLE_LIST_ITEMS_PER_PAGE = 10

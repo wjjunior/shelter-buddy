@@ -21,7 +21,7 @@ export class AnimalStore {
   async fetchAnimals() {
     this.loading = true
     try {
-      const mockedResponse = mockAnimalList(5)
+      const mockedResponse = mockAnimalList(50)
       await new Promise(resolve => setTimeout(resolve, 1000))
       this.animals = mockedResponse
     } catch (error: unknown) {

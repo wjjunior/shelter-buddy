@@ -28,6 +28,7 @@ const PaginationComponent: React.FC<PaginationComponentProps> = ({
           className={`${classes.button} ${buttonClass}`}
           variant={isActive ? 'contained' : 'outlined'}
           onClick={() => handlePageChange(page)}
+          data-testid="pagination-button"
         >
           {page}
         </Button>
