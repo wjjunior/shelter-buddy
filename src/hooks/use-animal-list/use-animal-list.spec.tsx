@@ -4,8 +4,7 @@ import animalStore from '../../store/animal-store/animal-store'
 
 import useAnimalList from './use-animal-list'
 
-// Mock the fetchAnimals function in the animalStore
-jest.mock('../store/animal-store', () => ({
+jest.mock('../../store/animal-store/animal-store', () => ({
   fetchAnimals: jest.fn(),
   animalList: { data: [], count: 0 },
 }))
