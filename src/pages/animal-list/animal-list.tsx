@@ -49,6 +49,7 @@ const AnimalsList = observer(() => {
   useEffect(() => {
     const debouncedSetNameStartsWith = debounce(setSearchInputValue, 1000)
     debouncedSetNameStartsWith(searchInputValue)
+    setCurrentPage(1)
     return () => {
       debouncedSetNameStartsWith.clear()
     }
