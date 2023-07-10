@@ -2,7 +2,6 @@ import { CardContent, Grid, useMediaQuery, useTheme } from '@material-ui/core'
 import React from 'react'
 
 import { InformactiveBadge, Loading, SearchInput } from '..'
-import { SORTABLE_LIST_ITEMS_PER_PAGE } from '../../utils/constants'
 
 import {
   SortableListMobileComponent,
@@ -27,12 +26,9 @@ const SortableList: React.FC<SortableListProps> = ({
   sortOrder = 'asc',
   isLoading = false,
 }) => {
-  const itemsPerPage = SORTABLE_LIST_ITEMS_PER_PAGE
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
   const classes = useStyles()
-
-  const totalPages = Math.ceil(tableData.count / itemsPerPage)
 
   const renderList = () => {
     if (isMobile) {
@@ -79,8 +75,9 @@ const SortableList: React.FC<SortableListProps> = ({
           {handlePageChange && (
             <PaginationComponent
               currentPage={currentPage}
-              totalPages={totalPages}
+              count={tableData.count}
               onPageChange={handlePageChange}
+              isMobile={isMobile}
             />
           )}
         </StyledPaginationDiv>

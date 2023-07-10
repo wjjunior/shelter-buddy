@@ -2,6 +2,7 @@
 
 export type PaginationComponentProps = {
   currentPage: number
-  totalPages: number
+  count: number
   onPageChange: (page: number) => void
+  isMobile?: boolean
 }
