@@ -1,33 +1,24 @@
-# Shelter Buddy dashboard app - Code Test
+# Shelter Buddy (Pet Loyalty Challenge)
+> ## :page_with_curl: Resources
 
-Welcome to the ShelterBuddy frontend developer code test.
-Your goal is to replicate the dashboard page found at: [https://shelterbuddy.vercel.app/](https://shelterbuddy.vercel.app/). producing code that is suitable for a production release.
+- React 17
+- Node v16
+- Typescript
+- GraphQL
+- MobX
+- Material UI
+- Jest
+- Apollo Client
+- TDD
+- Dependency Inversion
 
-## Requirements:
+> ## :books: Requirements
 
-1. As a shelter worker I want to see a list of all the animals at my shelter so that I can get an overview of animals being sheltered.
+- Git
+- Node
+- NPM
 
-2. As a shelter worker I want to be able to search the animals at my shelter by name so that I can quickly find the desired animal.
-
-3. As a shelter worker I want to see a count of the number of animals currently displayed in my list.
-
-### Bonus Points:
-
-- Mobile friendly
-
-## Implementation Details
-
-Feel free to implement your own way of fetching data, you can either use Fetch API, Relay, or some other solution.
-
-Use the following link to access the playground to see the endpoint schema: [Playground](https://akjgi8mbsd.execute-api.ap-southeast-2.amazonaws.com/Prod/graphql/)
-
-The `animals` query is using the cursor based pagination, so to help you to create the page numbers, there is a function in `src/utils/utils.ts` to generate the cursor based on the page number.
-
-### How to use the playground
-
-On the initial page, click on "Browser schema", then on the "Connection Settings" panel click on "Apply". On the "Operations" tab you can test the `animals` query. On the "Schema Reference" tab you can see the schema types.
-
-## Available Scripts
+## :rocket: Available Scripts
 
 In the project directory, you can run:
 
@@ -55,3 +46,26 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
+
+> ## Considerations
+
+I made an effort to create a simple solution that adheres to the given time constraints and application requirements, paying close attention to the CSS specifications provided by the template page.
+
+To ensure code quality and proper commits, I implemented various packages such as eslint, husky, commitlint, and lint-staged. These tools helped maintain consistency and caught potential issues during development.
+
+Additionally, I also used TDD to establish a testable architecture and minimize the need for extensive test mocking. This approach facilitated the construction process and ensured robust testing of critical components.
+
+By combining these techniques and methodologies, I aimed to deliver a well-structured and thoroughly tested solution within the given constraints.
+
+
+
+> ### Challenges
+
+- Material UI
+Over the past two years, my primary experience has been centered around utilizing a company-specific UI library. However, I have also explored Material UI during personal studies. 
+Initially, I faced challenges in effectively leveraging its newer features. But I overcame these obstacles by diligently reading the documentation and conducting some researchs.
+
+
+> ## ToDo
+
+- Due to the available time and simplicity of the application, I chose not to implement a more complex architecture and end-to-end tests that could be done;
