@@ -1,6 +1,6 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client'
 
 export const apolloClient = new ApolloClient({
-  uri: 'https://akjgi8mbsd.execute-api.ap-southeast-2.amazonaws.com/Prod/graphql',
+  uri: process.env.REACT_APP_GRAPHQL_URI,
   cache: new InMemoryCache(),
 })
