@@ -1,3 +1,3 @@
-import { useAnimalList } from './use-anima-list'
+import { useAnimalList } from './use-animal-list'
 
 export { useAnimalList }

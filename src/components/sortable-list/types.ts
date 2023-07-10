@@ -2,7 +2,7 @@
 import React from 'react'
 
 export type SortableListData = {
-  [key: string]: string | number
+  [key: string]: string | number | undefined | null
 }
 
 export interface SortableListDataWithCount {

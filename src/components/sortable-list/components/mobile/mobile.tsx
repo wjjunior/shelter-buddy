@@ -9,6 +9,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import React from 'react'
 
 import PlaceholderImage from '../../../../assets/images/placeholder.png'
+import { StyledThumbnailImg } from '../../styled'
 import { SortableListData } from '../../types'
 
 import { StyledContainerDiv, StyledDiv, useStyles } from './styled'
@@ -33,7 +34,7 @@ const SortableListMobileComponent: React.FC<SortableListMobileProps> = ({
             >
               <Grid container spacing={2} alignItems="center">
                 <Grid item>
-                  <img
+                  <StyledThumbnailImg
                     src={(item.img as string) || PlaceholderImage}
                     alt={(item.name as string) || ''}
                   />

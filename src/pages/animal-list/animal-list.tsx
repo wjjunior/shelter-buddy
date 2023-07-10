@@ -6,6 +6,7 @@ import { useCallback, useEffect, useState } from 'react'
 import Placeholder from '../../assets/images/placeholder.png'
 import { Header } from '../../components/header'
 import { SortableList } from '../../components/sortable-list'
+import { StyledThumbnailImg } from '../../components/sortable-list/styled'
 import {
   SortableListData,
   SortableListDataWithCount,
@@ -92,7 +93,10 @@ const AnimalsList = observer(() => {
   const TableRowComponent = ({ item }: { item: SortableListData }) => (
     <TableRow className={classes.animalDetails}>
       <TableCell align="left">
-        <img src={Placeholder} alt={item.name as string} />
+        <StyledThumbnailImg
+          src={(item.img as string) || Placeholder}
+          alt={(item.name as string) || ''}
+        />
       </TableCell>
       <TableCell align="left">{item.name}</TableCell>
       <TableCell align="left">{item.type}</TableCell>

@@ -30,8 +30,8 @@ describe('SortableListMobileComponent', () => {
   it('should render the list items correctly', () => {
     const { getAllByText } = makeSut()
 
-    const item1Name = getAllByText(mockItemList[0].name)
-    const item2Name = getAllByText(mockItemList[1].name)
+    const item1Name = getAllByText(mockItemList[0].name as string)
+    const item2Name = getAllByText(mockItemList[1].name as string)
 
     expect(item1Name[1]).toBeInTheDocument()
     expect(item2Name[1]).toBeInTheDocument()
@@ -56,8 +56,10 @@ describe('SortableListMobileComponent', () => {
   it('should render the MobileRowComponent for each item', () => {
     const { getAllByText } = makeSut()
 
-    const item1RowComponent = getAllByText(mockItemList[0].name)[1].parentElement
-    const item2RowComponent = getAllByText(mockItemList[1].name)[1].parentElement
+    const item1RowComponent = getAllByText(mockItemList[0].name as string)[1]
+      .parentElement
+    const item2RowComponent = getAllByText(mockItemList[1].name as string)[1]
+      .parentElement
 
     expect(item1RowComponent).toBeInTheDocument()
     expect(item2RowComponent).toBeInTheDocument()

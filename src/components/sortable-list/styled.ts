@@ -22,3 +22,9 @@ export const StyledPaginationDiv = styled('div')(() => ({
   alignItems: 'center',
   justifyContent: 'start',
 }))
+
+export const StyledThumbnailImg = styled('img')(() => ({
+  width: '48px',
+  height: '48px',
+  borderRadius: '50px',
+}))

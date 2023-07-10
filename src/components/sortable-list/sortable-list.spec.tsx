@@ -96,7 +96,7 @@ describe('SortableTable Component', () => {
     const { getByText } = makeSut({ tableData })
 
     tableData.data.forEach(item => {
-      const rowData = getByText(item.name)
+      const rowData = getByText(item.name as string)
       expect(rowData).toBeInTheDocument()
     })
   })

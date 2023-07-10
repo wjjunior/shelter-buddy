@@ -73,6 +73,7 @@ export class AnimalStore {
           breed: edge.node?.breed?.name,
           gender: edge.node?.sex?.name,
           color: edge.node?.color,
+          img: edge.node?.photoUrl,
         })),
         count: response.data.animals.totalCount,
       }
