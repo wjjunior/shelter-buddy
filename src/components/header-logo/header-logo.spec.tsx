@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react'
 
-import Header from './header'
+import Header from './header-logo'
 
-describe('Header component', () => {
+describe('Header Logo component', () => {
   test('should render the header with logo', () => {
     const { getByAltText } = render(<Header />)
     const logoElement = getByAltText('Shelter Buddy logo')

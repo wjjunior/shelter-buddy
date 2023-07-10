@@ -5,7 +5,7 @@ import React from 'react'
 import { useCallback, useEffect, useState } from 'react'
 
 import PlaceholderImage from '../../assets/images/placeholder.png'
-import { Header, SortableList } from '../../components'
+import { HeaderLogo, SortableList } from '../../components'
 import { StyledThumbnailImg } from '../../components/sortable-list/styled'
 import {
   SortableListData,
@@ -117,7 +117,7 @@ const AnimalsList = observer(() => {
 
   return (
     <>
-      <Header />
+      <HeaderLogo />
       <StyledMainDiv>
         <Grid container spacing={2}>
           <Grid item xs={true}>
