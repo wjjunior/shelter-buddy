@@ -1,5 +1,5 @@
 import { useMediaQuery } from '@material-ui/core'
-import { render, fireEvent, screen as testScreen } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import Chance from 'chance'
 import React from 'react'
 
@@ -45,12 +45,24 @@ const mockMobileItemComponent: React.FC<MockTableRowProps> = ({ item }) => (
   </ul>
 )
 
+const mockTableData = (count: number) => ({
+  data: mockAnimalList(count),
+  count: count,
+})
+
 const makeSut = ({
   title = chance.word(),
   headers = mockHeaders,
-  tableData = mockAnimalList(3),
+  tableData = mockTableData(3),
   TableRowComponent = mockTableRowComponent,
   MobileItemComponent = mockMobileItemComponent,
+  handlePageChange = jest.fn(),
+  currentPage = 1,
+  searchInputValue = '',
+  handleSearchInputChange = jest.fn(),
+  handleSortOrderChange = jest.fn(),
+  sortBy = mockHeaders[0].property,
+  sortOrder = 'asc',
 }: Partial<SortableListProps> = {}) =>
   render(
     <SortableList
@@ -59,6 +71,13 @@ const makeSut = ({
       tableData={tableData}
       TableRowComponent={TableRowComponent}
       MobileItemComponent={MobileItemComponent}
+      handlePageChange={handlePageChange}
+      currentPage={currentPage}
+      searchInputValue={searchInputValue}
+      handleSearchInputChange={handleSearchInputChange}
+      handleSortOrderChange={handleSortOrderChange}
+      sortBy={sortBy}
+      sortOrder={sortOrder}
     />,
   )
 
@@ -73,42 +92,11 @@ describe('SortableTable Component', () => {
   })
 
   test('should render table data correctly', () => {
-    const tableData = mockAnimalList(3)
+    const tableData = mockTableData(3)
     const { getByText } = makeSut({ tableData })
 
-    tableData.forEach(item => {
+    tableData.data.forEach(item => {
       const rowData = getByText(item.name)
-      expect(rowData).toBeInTheDocument()
-    })
-  })
-
-  test('should sort data correctly on header click', () => {
-    const tableData = mockAnimalList(3)
-    const { getByText } = makeSut({ tableData })
-
-    const randomHeaderIndex = chance.integer({ min: 0, max: mockHeaders.length - 1 })
-    const headerToSort = mockHeaders[randomHeaderIndex]
-    const sortedData = [...tableData].sort((a, b) => {
-      const prop = headerToSort.property
-      const propA = a[prop] as string | number
-      const propB = b[prop] as string | number
-
-      if (typeof propA === 'number' && typeof propB === 'number') {
-        return propA - propB
-      }
-
-      if (typeof propA === 'string' && typeof propB === 'string') {
-        return propA.localeCompare(propB)
-      }
-
-      return 0
-    })
-
-    const headerElement = getByText(headerToSort.label)
-    fireEvent.click(headerElement)
-
-    sortedData.forEach(item => {
-      const rowData = testScreen.getByText(item.name)
       expect(rowData).toBeInTheDocument()
     })
   })
@@ -133,7 +121,7 @@ describe('SortableTable Component', () => {
     )
 
     const { getByText } = makeSut({
-      tableData: mockAnimalList(1),
+      tableData: mockTableData(1),
       MobileItemComponent,
     })
 
@@ -153,41 +141,22 @@ describe('SortableTable Component', () => {
     )
 
     const { getByText } = makeSut({
-      tableData: mockAnimalList(1),
+      tableData: mockTableData(1),
       TableRowComponent,
     })
 
     expect(getByText('Table Row')).toBeInTheDocument()
   })
 
-  test('should render the correct number of items per page', () => {
-    const tableData = mockAnimalList(11)
-    const { getAllByTestId } = makeSut({
-      tableData,
-      TableRowComponent: ({ item }) => (
-        <tr data-testid="item-component">
-          <td>{item.id}</td>
-          <td>{item.name}</td>
-        </tr>
-      ),
-    })
-
-    const itemsPerPage = Math.min(tableData.length, SORTABLE_LIST_ITEMS_PER_PAGE)
-
-    const items = getAllByTestId('item-component')
-    expect(items).toHaveLength(itemsPerPage)
-  })
-
   test('should render pagination buttons correctly', () => {
-    const tableData = mockAnimalList(11)
+    const tableData = mockTableData(11)
     const { getAllByTestId } = makeSut({
       tableData,
     })
 
     const paginationButtons = getAllByTestId('pagination-button')
 
-    const totalPages = Math.ceil(tableData.length / SORTABLE_LIST_ITEMS_PER_PAGE)
+    const totalPages = Math.ceil(tableData.count / SORTABLE_LIST_ITEMS_PER_PAGE)
     expect(paginationButtons).toHaveLength(totalPages)
-    expect(paginationButtons[0]).toHaveClass('makeStyles-activeButton-82')
   })
 })

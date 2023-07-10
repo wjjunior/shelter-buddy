@@ -1,52 +1,43 @@
 import { render, fireEvent } from '@testing-library/react'
 import Chance from 'chance'
 
-import { mockAnimalList } from '../../mocks/mock-animal-list'
-import { SortableListData } from '../sortable-list/types'
-
 import SearchInput from './search-input'
+import { SearchInputProps } from './types'
 
-describe('SearchInput', () => {
-  const chance = new Chance()
+const chance = new Chance()
 
-  const mockList = mockAnimalList(5) as unknown as SortableListData[]
+const makeSut = ({
+  value = chance.word(),
+  handleSearchInputChange = jest.fn(),
+}: Partial<SearchInputProps> = {}) =>
+  render(<SearchInput value={value} handleSearchInputChange={handleSearchInputChange} />)
 
-  test('renders the search input', () => {
-    const setFilteredList = jest.fn()
-    const { getByPlaceholderText } = render(
-      <SearchInput list={mockList} setFilteredList={setFilteredList} />,
-    )
+describe('SearchInput Component', () => {
+  test('should render the SearchInput component correctly', () => {
+    const { getByPlaceholderText } = makeSut()
+
     const searchInput = getByPlaceholderText('Search an animal by name')
     expect(searchInput).toBeInTheDocument()
   })
 
-  test('updates search term on input change', () => {
-    const setFilteredList = jest.fn()
-    const { getByPlaceholderText } = render(
-      <SearchInput list={mockList} setFilteredList={setFilteredList} />,
-    )
-    const searchInput = getByPlaceholderText(
-      'Search an animal by name',
-    ) as HTMLInputElement
-    const inputValue = chance.word()
-    fireEvent.change(searchInput, { target: { value: inputValue } })
-    expect(searchInput.value).toBe(inputValue)
+  test('should call handleSearchInputChange when input value changes', () => {
+    const handleSearchInputChange = jest.fn()
+    const { getByPlaceholderText } = makeSut({ handleSearchInputChange })
+
+    const searchInput = getByPlaceholderText('Search an animal by name')
+
+    fireEvent.change(searchInput, { target: { value: 'Dog' } })
+
+    expect(handleSearchInputChange).toHaveBeenCalledTimes(1)
+    expect(handleSearchInputChange).toHaveBeenCalledWith('Dog')
   })
 
-  test('filters the list based on search term', () => {
-    const setFilteredList = jest.fn()
-    const { getByPlaceholderText } = render(
-      <SearchInput list={mockList} setFilteredList={setFilteredList} />,
-    )
-    const searchInput = getByPlaceholderText(
-      'Search an animal by name',
-    ) as HTMLInputElement
-    const searchTerm = chance.word({ length: 2 })
-    fireEvent.change(searchInput, { target: { value: searchTerm } })
-    const filteredList = mockList.filter(el => {
-      const name = String(el.name)
-      return name.toLowerCase().includes(searchTerm.toLowerCase())
-    })
-    expect(setFilteredList).toHaveBeenCalledWith(filteredList)
+  test('should display the provided value in the input', () => {
+    const value = 'Cat'
+    const { getByPlaceholderText } = makeSut({ value })
+
+    const searchInput = getByPlaceholderText('Search an animal by name')
+
+    expect(searchInput).toHaveValue(value)
   })
 })

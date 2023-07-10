@@ -30,7 +30,7 @@ const SortableListTableComponent: React.FC<SortableListTableProps> = ({
                 <TableSortLabel
                   active={sortBy === header.property}
                   direction={sortOrder}
-                  onClick={() => handleSort(header.property)}
+                  onClick={() => handleSort(header.property as string)}
                 >
                   {header.label}
                 </TableSortLabel>

@@ -1,7 +1,7 @@
-import { Animal } from '../store/types'
+import { AnimalList } from '../store/types'
 
 export interface AnimalListHook {
   loading: boolean
   error: Error | null
-  animals: Animal[]
+  animalList: AnimalList
 }

@@ -1,14 +1,26 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 
-export interface SortableListData {
+export type SortableListData = {
   [key: string]: string | number
 }
 
-export type SortableListProps = {
+export interface SortableListDataWithCount {
+  data: SortableListData[]
+  count: number
+}
+
+export interface SortableListProps {
   headers: { label: string; property: keyof SortableListData; isSortable: boolean }[]
-  tableData: SortableListData[]
+  tableData: SortableListDataWithCount
   TableRowComponent: React.FC<{ item: SortableListData }>
   MobileItemComponent: React.FC<{ item: SortableListData }>
-  defaultSortBy?: keyof SortableListData
   title: string
+  handleSortOrderChange: (property: string) => void
+  currentPage?: number
+  handlePageChange?: (page: number) => void
+  searchInputValue?: string
+  handleSearchInputChange?: (value: string) => void
+  sortBy?: keyof SortableListData
+  sortOrder?: 'asc' | 'desc'
 }

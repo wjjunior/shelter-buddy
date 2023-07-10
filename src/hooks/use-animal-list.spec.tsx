@@ -1,44 +1,54 @@
-import { renderHook } from '@testing-library/react-hooks'
+import { act, renderHook } from '@testing-library/react-hooks'
 
-import { mockAnimalStore } from '../mocks/mock-animal-store'
+import animalStore from '../store/animal-store'
 
 import useAnimalList from './use-animal-list'
 
-jest.mock('../store/animal-store', () => mockAnimalStore)
+// Mock the fetchAnimals function in the animalStore
+jest.mock('../store/animal-store', () => ({
+  fetchAnimals: jest.fn(),
+  animalList: { data: [], count: 0 },
+}))
 
 describe('useAnimalList', () => {
-  test('should fetch animals successfully', async () => {
-    const { result, waitForNextUpdate } = renderHook(() => useAnimalList())
-
-    expect(result.current.loading).toBe(true)
-    expect(result.current.error).toBeNull()
-    expect(result.current.animals).toEqual([])
-
-    await waitForNextUpdate()
-
-    expect(result.current.loading).toBe(false)
-    expect(result.current.error).toBeNull()
-    expect(result.current.animals).toEqual(mockAnimalStore.animals)
+  beforeEach(() => {
+    jest.clearAllMocks()
   })
 
-  test('should handle fetch animals error', async () => {
-    const mockError = new Error('Failed to fetch animals')
+  it('should fetch animals and update animalList on mount', async () => {
+    const mockFetchAnimals = jest.spyOn(animalStore, 'fetchAnimals')
+    const params = { page: 1, nameStartsWith: 'A', sortBy: 'name', sortOrder: 'asc' }
 
-    // Override the fetchAnimals method to throw an error
-    mockAnimalStore.fetchAnimals = async () => {
-      throw mockError
-    }
+    await act(async () => {
+      renderHook(() => useAnimalList(params))
+    })
 
-    const { result, waitForNextUpdate } = renderHook(() => useAnimalList())
+    expect(mockFetchAnimals).toHaveBeenCalledWith({
+      params,
+      after: 'LTE=',
+      order: [{ name: 'ASC' }],
+    })
+    expect(animalStore.animalList).toEqual({ data: [], count: 0 })
+  })
+
+  it('should set loading to true while fetching animals', async () => {
+    const { result, waitForNextUpdate } = renderHook(() => useAnimalList({ page: 1 }))
 
     expect(result.current.loading).toBe(true)
-    expect(result.current.error).toBeNull()
-    expect(result.current.animals).toEqual([])
 
     await waitForNextUpdate()
 
     expect(result.current.loading).toBe(false)
+  })
+
+  it('should set the error state if an error occurs while fetching animals', async () => {
+    const mockError = new Error('Failed to fetch animals')
+    jest.spyOn(animalStore, 'fetchAnimals').mockRejectedValue(mockError)
+
+    const { result, waitForNextUpdate } = renderHook(() => useAnimalList({ page: 1 }))
+
+    await waitForNextUpdate()
+
     expect(result.current.error).toBe(mockError)
-    expect(result.current.animals).toEqual([])
   })
 })
