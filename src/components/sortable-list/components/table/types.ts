@@ -1,17 +1,17 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
 
-import { SortableListData } from '../../../../components/sortable-list/types'
+import { ListModel } from '../../../../domain/models'
 
 export type SortableListTableProps = {
   headers: {
     label: string
-    property: keyof SortableListData
+    property: keyof ListModel
     isSortable: boolean
   }[]
-  itemsList: SortableListData[]
-  TableRowComponent: React.FC<{ item: SortableListData }>
-  sortBy: keyof SortableListData
+  itemsList: ListModel[]
+  TableRowComponent: React.FC<{ item: ListModel }>
+  sortBy: keyof ListModel
   sortOrder: 'asc' | 'desc'
   handleSort: (property: string) => void
 }

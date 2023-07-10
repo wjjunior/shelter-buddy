@@ -9,8 +9,8 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import React from 'react'
 
 import PlaceholderImage from '../../../../assets/images/placeholder.png'
+import { ListModel } from '../../../../domain/models'
 import { StyledThumbnailImg } from '../../styled'
-import { SortableListData } from '../../types'
 
 import { StyledContainerDiv, StyledDiv, useStyles } from './styled'
 import { SortableListMobileProps } from './types'
@@ -24,7 +24,7 @@ const SortableListMobileComponent: React.FC<SortableListMobileProps> = ({
   return (
     <StyledContainerDiv>
       <StyledDiv>
-        {itemList.map((item: SortableListData) => (
+        {itemList.map((item: ListModel) => (
           <Accordion key={item.id} className={classes.accordion} elevation={0}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon className={classes.chevronDownIcon} />}

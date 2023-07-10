@@ -2,10 +2,11 @@ import { ApolloClient, NormalizedCacheObject } from '@apollo/client'
 import { observable, action, makeObservable } from 'mobx'
 
 import { apolloClient } from '../../api/apollo-client'
+import { SortableListDataWithCount } from '../../components/sortable-list/types'
+import { Animal } from '../../domain/models'
 
 import { GET_ANIMALS_LIST } from './queries'
 import {
-  AnimalList,
   AnimalStoreFetchAnimalsParams,
   Edge,
   GetAnimalsListQueryResponse,
@@ -13,7 +14,7 @@ import {
 } from './types'
 
 export class AnimalStore {
-  animalList: AnimalList = {
+  animalList: SortableListDataWithCount<Animal> = {
     data: [],
     count: 0,
   }

@@ -1,7 +1,8 @@
-import { AnimalList } from '../../store/animal-store/types'
+import { SortableListDataWithCount } from '../../components/sortable-list/types'
+import { Animal } from '../../domain/models'
 
 export interface AnimalListHook {
   loading: boolean
   error: Error | null
-  animalList: AnimalList
+  animalList: SortableListDataWithCount<Animal>
 }

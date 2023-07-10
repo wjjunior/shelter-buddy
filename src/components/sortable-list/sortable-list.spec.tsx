@@ -3,18 +3,19 @@ import { render } from '@testing-library/react'
 import Chance from 'chance'
 import React from 'react'
 
+import { ListModel } from '../../domain/models'
 import { mockAnimalList } from '../../mocks/mock-animal-list'
 import { SORTABLE_LIST_ITEMS_PER_PAGE } from '../../utils/constants'
 
 import SortableList from './sortable-list'
-import { SortableListData, SortableListProps } from './types'
+import { SortableListProps } from './types'
 
 jest.mock('@material-ui/core', () => ({
   ...jest.requireActual('@material-ui/core'),
   useMediaQuery: jest.fn(),
 }))
 interface MockTableRowProps {
-  item: SortableListData
+  item: ListModel
 }
 
 const chance = new Chance()

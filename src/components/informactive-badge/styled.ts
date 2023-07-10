@@ -1,6 +1,6 @@
 import { styled } from '@mui/system'
 
-type StyledAnimalsBadgeProps = {
+interface StyledAnimalsBadgeProps {
   backgroundColor: string
 }
 

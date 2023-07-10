@@ -24,8 +24,8 @@ const SortableListTableComponent: React.FC<SortableListTableProps> = ({
     <Table className={classes.sortableTable}>
       <TableHead>
         <TableRow>
-          {headers.map(header => (
-            <TableCell key={header.property}>
+          {headers.map((header, index) => (
+            <TableCell key={index}>
               {header.isSortable ? (
                 <TableSortLabel
                   active={sortBy === header.property}

@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 
-export type SearchInputProps = {
+export interface SearchInputProps {
   value: string
   handleSearchInputChange: (value: string) => void
 }

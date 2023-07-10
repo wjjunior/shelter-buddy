@@ -1,19 +1,3 @@
-export interface Animal {
-  [key: string]: string | number | undefined | null
-  id: number | string
-  name?: string
-  type: string
-  breed: string
-  gender: string
-  color: string
-  img?: string | null
-}
-
-export interface AnimalList {
-  data: Animal[]
-  count: number
-}
-
 export interface GetAnimalsListQueryVariables {
   order:
     | {

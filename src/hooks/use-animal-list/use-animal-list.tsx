@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 
+import { SortableListDataWithCount } from '../../components/sortable-list/types'
+import { Animal } from '../../domain/models'
 import animalStore from '../../store/animal-store/animal-store'
-import { AnimalList, AnimalListParams } from '../../store/animal-store/types'
+import { AnimalListParams } from '../../store/animal-store/types'
 import { SORTABLE_LIST_ITEMS_PER_PAGE } from '../../utils/constants'
 import { getCursor, getSortOrderArray } from '../../utils/utils'
 
@@ -11,7 +13,10 @@ const useAnimalList = (params: AnimalListParams): AnimalListHook => {
   const { page, nameStartsWith, sortBy, sortOrder } = params
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<Error | null>(null)
-  const [animalList, setAnimalList] = useState<AnimalList>({ data: [], count: 0 })
+  const [animalList, setAnimalList] = useState<SortableListDataWithCount<Animal>>({
+    data: [],
+    count: 0,
+  })
 
   const fetchAnimals = async (params: AnimalListParams): Promise<void> => {
     try {

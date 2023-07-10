@@ -1,27 +1,25 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
 
-export type SortableListData = {
-  [key: string]: string | number | undefined | null
-}
+import { ListModel } from '../../domain/models'
 
-export interface SortableListDataWithCount {
-  data: SortableListData[]
+export interface SortableListDataWithCount<T extends ListModel> {
+  data: T[]
   count: number
 }
 
 export interface SortableListProps {
-  headers: { label: string; property: keyof SortableListData; isSortable: boolean }[]
-  tableData: SortableListDataWithCount
-  TableRowComponent: React.FC<{ item: SortableListData }>
-  MobileItemComponent: React.FC<{ item: SortableListData }>
+  headers: { label: string; property: keyof ListModel; isSortable: boolean }[]
+  tableData: SortableListDataWithCount<ListModel>
+  TableRowComponent: React.FC<{ item: ListModel }>
+  MobileItemComponent: React.FC<{ item: ListModel }>
   title: string
   handleSortOrderChange: (property: string) => void
   currentPage?: number
   handlePageChange?: (page: number) => void
   searchInputValue?: string
   handleSearchInputChange?: (value: string) => void
-  sortBy?: keyof SortableListData
+  sortBy?: keyof ListModel
   sortOrder?: 'asc' | 'desc'
   isLoading?: boolean
 }

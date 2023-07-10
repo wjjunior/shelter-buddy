@@ -7,10 +7,7 @@ import { useCallback, useEffect, useState } from 'react'
 import PlaceholderImage from '../../assets/images/placeholder.png'
 import { HeaderLogo, SortableList } from '../../components'
 import { StyledThumbnailImg } from '../../components/sortable-list/styled'
-import {
-  SortableListData,
-  SortableListDataWithCount,
-} from '../../components/sortable-list/types'
+import { ListModel } from '../../domain/models'
 import { useAnimalList } from '../../hooks'
 
 import { StyledMainDiv, useStyles } from './styled'
@@ -65,7 +62,7 @@ const AnimalsList = observer(() => {
     { label: '', property: 'detail', isSortable: false },
   ]
 
-  const MobileItemComponent = ({ item }: { item: SortableListData }) => (
+  const MobileItemComponent = ({ item }: { item: ListModel }) => (
     <Grid item xs className={classes.mobileAnimalDetails}>
       <p>
         <span>Type:</span> {item.type}
@@ -91,7 +88,7 @@ const AnimalsList = observer(() => {
     </Grid>
   )
 
-  const TableRowComponent = ({ item }: { item: SortableListData }) => (
+  const TableRowComponent = ({ item }: { item: ListModel }) => (
     <TableRow className={classes.animalDetails}>
       <TableCell align="left">
         <StyledThumbnailImg
@@ -126,7 +123,7 @@ const AnimalsList = observer(() => {
               <SortableList
                 title="Your Animals"
                 headers={headers}
-                tableData={animalList as SortableListDataWithCount}
+                tableData={animalList}
                 TableRowComponent={TableRowComponent}
                 MobileItemComponent={MobileItemComponent}
                 sortBy={sortBy}

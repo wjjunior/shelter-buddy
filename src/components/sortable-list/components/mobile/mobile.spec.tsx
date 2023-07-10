@@ -1,15 +1,15 @@
 import { render } from '@testing-library/react'
 import React from 'react'
 
+import { ListModel } from '../../../../domain/models'
 import { mockAnimalList } from '../../../../mocks/mock-animal-list'
-import { SortableListData } from '../../types'
 
 import SortableListMobileComponent from './mobile'
 
 const mockItemList = mockAnimalList(2)
 
 type MockMobileRowComponentProps = {
-  item: SortableListData
+  item: ListModel
 }
 
 const MockMobileRowComponent: React.FC<MockMobileRowComponentProps> = ({ item }) => (
@@ -18,7 +18,7 @@ const MockMobileRowComponent: React.FC<MockMobileRowComponentProps> = ({ item })
   </div>
 )
 
-const makeSut = ({ itemList = mockItemList }: { itemList?: SortableListData[] } = {}) =>
+const makeSut = ({ itemList = mockItemList }: { itemList?: ListModel[] } = {}) =>
   render(
     <SortableListMobileComponent
       itemList={itemList}

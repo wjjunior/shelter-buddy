@@ -1,8 +1,7 @@
 import React from 'react'
 
-import { SortableListData } from '../../../../components/sortable-list/types'
-
-export type SortableListMobileProps = {
-  itemList: SortableListData[]
-  MobileRowComponent: React.FC<{ item: SortableListData }>
+import { ListModel } from '../../../../domain/models'
+export interface SortableListMobileProps {
+  itemList: ListModel[]
+  MobileRowComponent: React.FC<{ item: ListModel }>
 }
