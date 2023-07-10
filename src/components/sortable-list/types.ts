@@ -23,4 +23,5 @@ export interface SortableListProps {
   handleSearchInputChange?: (value: string) => void
   sortBy?: keyof SortableListData
   sortOrder?: 'asc' | 'desc'
+  isLoading?: boolean
 }

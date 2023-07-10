@@ -1,6 +1,9 @@
+import './assets/styles/index.css'
+
+import AnimalList from './pages/animal-list/animal-list'
+
 const App = () => {
-  // Your implementation starts here
-  return null
+  return <AnimalList />
 }
 
 export default App

@@ -3,6 +3,7 @@ import React from 'react'
 
 import { SORTABLE_LIST_ITEMS_PER_PAGE } from '../../utils/constants'
 import { InformactiveBadge } from '../informactive-badge'
+import { Loading } from '../loading'
 import { SearchInput } from '../search-input'
 
 import {
@@ -26,6 +27,7 @@ const SortableList: React.FC<SortableListProps> = ({
   handleSortOrderChange,
   sortBy = headers[0].property,
   sortOrder = 'asc',
+  isLoading = false,
 }) => {
   const itemsPerPage = SORTABLE_LIST_ITEMS_PER_PAGE
   const theme = useTheme()
@@ -33,6 +35,28 @@ const SortableList: React.FC<SortableListProps> = ({
   const classes = useStyles()
 
   const totalPages = Math.ceil(tableData.count / itemsPerPage)
+
+  const renderList = () => {
+    if (isMobile) {
+      return (
+        <SortableListMobileComponent
+          itemList={tableData.data}
+          MobileRowComponent={MobileItemComponent}
+        />
+      )
+    }
+
+    return (
+      <SortableListTableComponent
+        headers={headers}
+        itemsList={tableData.data}
+        TableRowComponent={TableRowComponent}
+        sortBy={sortBy}
+        sortOrder={sortOrder}
+        handleSort={handleSortOrderChange}
+      />
+    )
+  }
 
   return (
     <CardContent className={classes.cardContent}>
@@ -51,21 +75,7 @@ const SortableList: React.FC<SortableListProps> = ({
       </Grid>
       <Grid container spacing={2}>
         <Grid item xs>
-          {isMobile ? (
-            <SortableListMobileComponent
-              itemList={tableData.data}
-              MobileRowComponent={MobileItemComponent}
-            />
-          ) : (
-            <SortableListTableComponent
-              headers={headers}
-              itemsList={tableData.data}
-              TableRowComponent={TableRowComponent}
-              sortBy={sortBy}
-              sortOrder={sortOrder}
-              handleSort={handleSortOrderChange}
-            />
-          )}
+          {isLoading ? <Loading /> : renderList()}
         </Grid>
         <StyledPaginationDiv data-testid="pagination-component">
           {handlePageChange && (
