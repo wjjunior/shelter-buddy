@@ -64,6 +64,7 @@ By combining these techniques and methodologies, I aimed to deliver a well-struc
 > ### Challenges
 
 - Material UI
+
 Over the past two years, my primary experience has been centered around utilizing a company-specific UI library. However, I have also explored Material UI during personal studies. 
 Initially, I faced challenges in effectively leveraging its newer features. But I overcame these obstacles by diligently reading the documentation and conducting some researchs.
 
