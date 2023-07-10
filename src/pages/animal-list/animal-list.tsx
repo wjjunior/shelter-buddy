@@ -5,7 +5,7 @@ import React from 'react'
 import { useCallback, useEffect, useState } from 'react'
 
 import PlaceholderImage from '../../assets/images/placeholder.png'
-import { Header } from '../../components/Header'
+import { Header } from '../../components/header'
 import { SortableList } from '../../components/sortable-list'
 import { StyledThumbnailImg } from '../../components/sortable-list/styled'
 import {
