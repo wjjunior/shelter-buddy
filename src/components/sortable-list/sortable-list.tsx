@@ -1,10 +1,8 @@
 import { CardContent, Grid, useMediaQuery, useTheme } from '@material-ui/core'
 import React from 'react'
 
+import { InformactiveBadge, Loading, SearchInput } from '..'
 import { SORTABLE_LIST_ITEMS_PER_PAGE } from '../../utils/constants'
-import { InformactiveBadge } from '../informactive-badge'
-import { Loading } from '../loading'
-import { SearchInput } from '../search-input'
 
 import {
   SortableListMobileComponent,

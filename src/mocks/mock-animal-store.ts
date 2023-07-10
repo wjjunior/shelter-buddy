@@ -1,4 +1,4 @@
-import { Animal } from '../store/types'
+import { Animal } from '../store/animal-store/types'
 
 import { mockAnimalList } from './mock-animal-list'
 

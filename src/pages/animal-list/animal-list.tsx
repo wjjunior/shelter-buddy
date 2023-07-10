@@ -10,7 +10,7 @@ import {
   SortableListData,
   SortableListDataWithCount,
 } from '../../components/sortable-list/types'
-import useAnimalList from '../../hooks/use-animal-list'
+import { useAnimalList } from '../../hooks'
 
 import { StyledMainDiv, useStyles } from './styled'
 

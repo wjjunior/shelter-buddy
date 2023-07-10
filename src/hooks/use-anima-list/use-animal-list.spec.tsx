@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks'
 
-import animalStore from '../store/animal-store'
+import animalStore from '../../store/animal-store/animal-store'
 
 import useAnimalList from './use-animal-list'
 

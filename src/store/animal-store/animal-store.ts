@@ -1,7 +1,7 @@
 import { ApolloClient, NormalizedCacheObject } from '@apollo/client'
 import { observable, action, makeObservable } from 'mobx'
 
-import { apolloClient } from '../api/apolloClient'
+import { apolloClient } from '../../api/apolloClient'
 
 import { GET_ANIMALS_LIST } from './queries'
 import {

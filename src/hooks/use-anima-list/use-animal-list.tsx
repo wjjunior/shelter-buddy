@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 
-import animalStore from '../store/animal-store'
-import { AnimalList, AnimalListParams } from '../store/types'
-import { SORTABLE_LIST_ITEMS_PER_PAGE } from '../utils/constants'
-import { getCursor, getSortOrderArray } from '../utils/utils'
+import animalStore from '../../store/animal-store/animal-store'
+import { AnimalList, AnimalListParams } from '../../store/animal-store/types'
+import { SORTABLE_LIST_ITEMS_PER_PAGE } from '../../utils/constants'
+import { getCursor, getSortOrderArray } from '../../utils/utils'
 
 import { AnimalListHook } from './types'
 

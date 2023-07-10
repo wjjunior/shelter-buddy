@@ -1,4 +1,4 @@
-import animalStore, { AnimalStore } from './animal-store'
+import animalStore, { AnimalStore } from './animal-store/animal-store'
 
 class RootStore {
   animalStore: AnimalStore

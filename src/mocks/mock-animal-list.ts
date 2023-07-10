@@ -1,6 +1,6 @@
 import Chance from 'chance'
 
-import { Animal } from '../store/types'
+import { Animal } from '../store/animal-store/types'
 
 export const mockAnimalList = (length = 5): Animal[] => {
   const chance = new Chance()

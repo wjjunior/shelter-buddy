@@ -1,4 +1,4 @@
-import { AnimalList } from '../store/types'
+import { AnimalList } from '../../store/animal-store/types'
 
 export interface AnimalListHook {
   loading: boolean
