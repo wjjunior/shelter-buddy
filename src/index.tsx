@@ -2,7 +2,7 @@ import { ApolloProvider } from '@apollo/client'
 import { Provider } from 'mobx-react'
 import ReactDOM from 'react-dom'
 
-import { apolloClient } from './api/apolloClient'
+import { apolloClient } from './api/apollo-client'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import rootStore from './store'
