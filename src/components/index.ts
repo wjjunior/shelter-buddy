@@ -1,4 +1,4 @@
-import { Header } from './header'
+import { Header } from './Header'
 import { InformactiveBadge } from './informactive-badge'
 import { Loading } from './loading'
 import { SearchInput } from './search-input'
