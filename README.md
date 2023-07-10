@@ -1,5 +1,6 @@
-# Shelter Buddy (Pet Loyalty Challenge)
-![Shelter Buddy](https://github.com/wjjunior/shelter-buddy/assets/13741072/11404842-7f0a-4d92-a654-ac3b3bbc855c)
+# Shelter Buddy (Pet Loyalty Challenge) - https://shelter-buddy.vercel.app/
+![Shelter Buddy](https://github.com/wjjunior/shelter-buddy/assets/13741072/96951887-7ef4-436c-85d1-3aafad37dbb0)
+
 > ## :page_with_curl: Resources
 
 - React 17
