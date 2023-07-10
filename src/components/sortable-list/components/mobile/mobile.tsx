@@ -37,6 +37,9 @@ const SortableListMobileComponent: React.FC<SortableListMobileProps> = ({
                   <StyledThumbnailImg
                     src={(item.img as string) || PlaceholderImage}
                     alt={(item.name as string) || ''}
+                    onError={(event: React.SyntheticEvent<HTMLImageElement>) =>
+                      (event.currentTarget.src = PlaceholderImage)
+                    }
                   />
                 </Grid>
                 <Grid item xs>

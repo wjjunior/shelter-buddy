@@ -1,9 +1,10 @@
 import { Button, Card, Grid, TableCell, TableRow, debounce } from '@material-ui/core'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 import { observer } from 'mobx-react'
+import React from 'react'
 import { useCallback, useEffect, useState } from 'react'
 
-import Placeholder from '../../assets/images/placeholder.png'
+import PlaceholderImage from '../../assets/images/placeholder.png'
 import { Header } from '../../components/header'
 import { SortableList } from '../../components/sortable-list'
 import { StyledThumbnailImg } from '../../components/sortable-list/styled'
@@ -94,8 +95,11 @@ const AnimalsList = observer(() => {
     <TableRow className={classes.animalDetails}>
       <TableCell align="left">
         <StyledThumbnailImg
-          src={(item.img as string) || Placeholder}
+          src={(item.img as string) || PlaceholderImage}
           alt={(item.name as string) || ''}
+          onError={(event: React.SyntheticEvent<HTMLImageElement>) =>
+            (event.currentTarget.src = PlaceholderImage)
+          }
         />
       </TableCell>
       <TableCell align="left">{item.name}</TableCell>
