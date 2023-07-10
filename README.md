@@ -1,4 +1,5 @@
 # Shelter Buddy (Pet Loyalty Challenge)
+![Shelter Buddy](https://github.com/wjjunior/shelter-buddy/assets/13741072/11404842-7f0a-4d92-a654-ac3b3bbc855c)
 > ## :page_with_curl: Resources
 
 - React 17
@@ -69,3 +70,5 @@ Initially, I faced challenges in effectively leveraging its newer features. But 
 > ## ToDo
 
 - Due to the available time and simplicity of the application, I chose not to implement a more complex architecture and end-to-end tests that could be done;
+- Refactor the application using @mui/material since @material-ui/core is deprecated
+- Upgrade packages to build using Node 18 or later since Node 16 is no longer a commercial version
